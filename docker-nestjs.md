@@ -1,0 +1,10 @@
+
+📌 Using Docker for NestJS Development
+
+1. A Dockerfile defines a containerized NestJS application by specifying how the container should be built and run. It starts from a base image, usually a Node.js image, installs dependencies, copies the project files, compiles the TypeScript code, and tells the container which command to run when it starts. Essentially, the Dockerfile acts like a blueprint that turns your NestJS project into a self-contained environment that can run anywhere Docker is supported.
+
+2. A multi-stage build in Docker is used to create smaller, optimized images. In the first stage, you might install all dependencies and build the application, which can include dev dependencies and large build tools. In the second stage, you only copy the compiled output and the production dependencies into a new image. This way, the final image is much lighter because it doesn’t include unnecessary build files or dev tools, making it faster to deploy and safer to run.
+
+3. Docker Compose simplifies running multiple services together by letting you define all your containers in a single docker-compose.yml file. For example, you can run a NestJS API alongside a PostgreSQL database, define the network between them, set environment variables, and manage dependencies between services—all with one command. This is much easier than starting and linking containers manually, especially when your app grows to include more services.
+
+4. To expose API logs and debug a running container, you can use Docker commands like docker logs <container_name> to see what the container is printing. You can also run an interactive shell inside the container using docker exec -it <container_name> sh (or bash if available) to inspect files, test API endpoints, or run commands manually. These tools let you troubleshoot errors, check configuration, or see runtime behavior without needing to rebuild the container.
