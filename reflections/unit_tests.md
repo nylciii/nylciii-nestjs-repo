@@ -1,0 +1,8 @@
+
+📌 Testing Redux with Jest
+
+
+1. The most challenging part of testing Redux is handling asynchronous actions (thunks). When you dispatch an async action like fetchNumber(), I need to test three different states: pending (loading starts), fulfilled (success), and rejected (error). The tricky part is ensuring your tests wait for the async operations to complete before checking the results—if I don't use await, the test will check the state too early and fail. I also need to mock external API calls so tests don't depend on real servers, which adds complexity. 
+
+
+2. Redux tests focus on pure data logic while React component tests focus on UI behavior and user interactions. In Redux tests, you're testing state transformations—given an action, does the reducer produce the correct new state? These tests are fast because they don't involve any DOM rendering; they're just testing JavaScript functions. In contrast, React component tests render actual components, simulate user events like clicks and typing, and verify that the UI displays correctly and updates when state changes. React tests are slower and more complex because they require rendering components, querying the DOM, handling async UI updates, and mocking more dependencies like the Redux store or context providers. Essentially, Redux tests verify your app's "brain" (the logic), while React tests verify your app's "body" (what users see and interact with). Both are necessary for comprehensive testing.
